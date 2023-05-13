@@ -5,6 +5,9 @@ CREATE TABLE "Shoe" (
     "brand" TEXT NOT NULL,
     "qty" INTEGER NOT NULL,
     "available" BOOLEAN NOT NULL DEFAULT true,
+    "desc" TEXT NOT NULL,
+    "price" INTEGER NOT NULL,
+    "img" TEXT NOT NULL,
     "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" DATETIME NOT NULL
 );

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../setup/head') %>
+</head>
+
+<body>
+    <%- include('../components/header') %>
+
+    <section id="home-content" class="container">
+        <div class="mt-5">
+            <div class="align-items-center d-flex justify-content-between">
+                <h3>Add Shoe Data</h3>
+
+                <a href="/shoe" class="btn btn-outline-danger">Cancel</a>
+            </div>
+
+            <form class="mt-4" method="POST" action="/add">
+                <div class="mb-3 row justify-content-start">
+                    <div class="col-12 col-sm-6">
+                        <label for="name" class="form-label">Name</label>
+
+                        <input type="text" name="name" class="form-control" id="name" placeholder="Ex. Nike N Air" />
+                    </div>
+
+                    <div class="col-12 col-sm-6">
+                        <label for="brand" class="form-label">Brand</label>
+
+                        <input type="text" class="form-control" name="brand" id="brand" placeholder="Ex. Nike" />
+                    </div>
+                </div>
+
+                <div class="mb-3 row justify-content-start">
+                    <div class="col-12 col-sm-6">
+                        <label for="size" class="form-label">Quantity</label>
+
+                        <input type="text" class="form-control" name="qty" id="size" placeholder="Ex. 32" />
+                    </div>
+
+                    <div class="col-12 col-sm-6">
+                        <label for="size" class="form-label">Status</label>
+
+                        <select class="form-select" name="available" aria-label="Default select example">
+                            <option selected value="true">Available</option>
+                            <option value="false">Non-Availabe</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="mb-3 row justify-content-start">
+                    <div class="col-12 col-sm-6">
+                        <label for="price" class="form-label">Price</label>
+                        
+                        <input type="text" class="form-control" name="price" id="price" placeholder="Ex. 100000" />
+                    </div>
+                
+                    <div class="col-12 col-sm-6">
+                        <label for="image" class="form-label">Image Url</label>
+                
+                        <input type="text" class="form-control" name="img" id="image" />
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="description" class="form-label"> Description </label>
+
+                    <textarea class="form-control" name="desc" id="description" rows="3"></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-outline-primary mt-4">
+                    Add
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <%- include('../setup/script') %>
+</body>
+
+</html>

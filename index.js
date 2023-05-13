@@ -10,9 +10,11 @@ app.use(express.json());
 app.use(cors());
 app.use(morgan("dev"));
 
-app.get("/", (req, res) => {
-  res.json({ msg: "Hello Express" });
-});
+// app.get("/", (req, res) => {
+//   res.json({ msg: "Hello Express" });
+// });
+
+app.set("view engine", "ejs");
 
 app.use(router);
 

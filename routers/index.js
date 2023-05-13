@@ -7,6 +7,6 @@ router.get("/", (req, res) => {
   res.status(200).json({ msg: "Server connected" });
 });
 
-router.use('/shoe', shoeRouter);
+router.use(shoeRouter);
 
 module.exports = router;

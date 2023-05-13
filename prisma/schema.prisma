@@ -13,6 +13,9 @@ model Shoe {
     brand     String
     qty       Int
     available Boolean  @default(true)
+    desc      String
+    price     Int
+    img       String
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
 }
