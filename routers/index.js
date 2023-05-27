@@ -4,6 +4,7 @@ const auth = require("../middlewares/auth")
 
 const shoeRouter = require("./shoe.router");
 const authRouter = require("./auth.router")
+const categoryRouter = require("./category.router")
 
 const router = Router();
 
@@ -20,5 +21,7 @@ router.get("/about", (req, res) => {
 });
 
 router.use(shoeRouter);
+
+router.use(categoryRouter);
 
 module.exports = router;

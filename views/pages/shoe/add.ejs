@@ -22,7 +22,7 @@
           enctype="multipart/form-data"
         >
           <div class="mb-3 row justify-content-start">
-            <div class="col-12 col-sm-6">
+            <div class="col-12 col-sm-4">
               <label for="name" class="form-label">Name</label>
 
               <input
@@ -35,7 +35,7 @@
               />
             </div>
 
-            <div class="col-12 col-sm-6">
+            <div class="col-12 col-sm-4">
               <label for="brand" class="form-label">Merk</label>
 
               <input
@@ -46,6 +46,18 @@
                 placeholder="Ex. Nike"
                 required
               />
+            </div>
+
+            <div class="col-12 col-sm-4">
+              <label for="description" class="form-label"> Category </label>
+              <select name="category" class="form-select" aria-label="Default select example" required>
+                <option value="" selected disabled>- Choose Category -</option>
+                <% categories.forEach(category=> { %>
+                  <option value="<%= category.id %>">
+                    <%= category.name %>
+                  </option>
+                  <% }) %>
+              </select>
             </div>
           </div>
 
