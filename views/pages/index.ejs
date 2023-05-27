@@ -2,54 +2,17 @@
 <html lang="en">
 
 <head>
-    <%- include('../setup/head') %>
+  <%- include("../setups/head") %>
 </head>
 
 <body>
-    <%- include('../components/header') %>
+  <%- include("../components/navbar") %>
 
-    <section id="home-content" class="container">
-        <div class="align-items-center d-flex justify-content-between mt-5 mb-4">
-            <h3>Shoe List</h3>
-            <a href="/add" class="btn btn-outline-primary"> Add </a>
-        </div>
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th scope="col">Id</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Brand</th>
-                    <th scope="col">Quantity</th>
-                    <th scope="col">Available</th>
-                    <th scope="col">Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                <% shoes.forEach(shoe => { %>
-                    <tr>
-                        <th scope="row"><%- shoe.id %></th>
-                        <td><%- shoe.name %></td>
-                        <td><%- shoe.brand %></td>
-                        <td><%- shoe.qty %></td>
-                        <td><span class='badge text-bg-<%- shoe.available == false ? 'danger' : 'primary' %>'><%- shoe.available %></span></td>
-                        <td class="d-flex gap-2">
-                            <a href="/shoe/<%- shoe.id %>" class="btn btn-sm btn-light">
-                                <i class="bi bi-eye"></i>
-                            </a>
-                            <a href="/add" class="btn btn-sm btn-light">
-                                <i class="bi bi-pencil-square"></i>
-                            </a>
-                            <a href="#" class="btn btn-sm btn-light">
-                                <i class="bi bi-trash"></i>
-                            </a>
-                        </td>
-                    </tr>
-                <% }) %>
-            </tbody>
-        </table>
-    </section>
-
-    <%- include('../setup/script') %>
+  <section id="home-content" class="container">
+    <div class="d-flex flex-column justify-content-center align-items-center mt-5">
+        <p class="h2">Welcome to Shoe Store</p>
+    </div>
+  </section>
 </body>
 
 </html>

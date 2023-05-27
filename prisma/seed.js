@@ -1,10 +1,12 @@
 const { PrismaClient } = require("@prisma/client");
+const { generateHash } = require("../lib/bcrypt");
+
 const prisma = new PrismaClient();
 
 const data = [
   {
     name: "Sport Shoe",
-    brand: "Nike",
+    merk: "Nike",
     qty: 12,
     available: false,
     desc: "Wearing a good pair of shoes is important for maintaining overall foot health and preventing foot pain and injuries. Good shoes provide proper support and cushioning for the feet, reducing the impact of everyday activities like walking, running, and standing. Quality shoes are made from durable materials that allow the feet to breathe and move naturally, preventing foot odor and fungal infections. Additionally, good shoes can improve posture, reduce back pain, and enhance athletic performance for sports and exercise. Investing in a good pair of shoes is a smart choice for anyone who wants to prioritize their foot health and comfort.",
@@ -13,7 +15,7 @@ const data = [
   },
   {
     name: "Sport Shoe",
-    brand: "Adidas",
+    merk: "Adidas",
     qty: 10,
     available: true,
     desc: "Wearing a good pair of shoes is important for maintaining overall foot health and preventing foot pain and injuries. Good shoes provide proper support and cushioning for the feet, reducing the impact of everyday activities like walking, running, and standing. Quality shoes are made from durable materials that allow the feet to breathe and move naturally, preventing foot odor and fungal infections. Additionally, good shoes can improve posture, reduce back pain, and enhance athletic performance for sports and exercise. Investing in a good pair of shoes is a smart choice for anyone who wants to prioritize their foot health and comfort.",
@@ -22,7 +24,7 @@ const data = [
   },
   {
     name: "Flat Shoe",
-    brand: "Gucci",
+    merk: "Gucci",
     qty: 20,
     available: true,
     desc: "Wearing a good pair of shoes is important for maintaining overall foot health and preventing foot pain and injuries. Good shoes provide proper support and cushioning for the feet, reducing the impact of everyday activities like walking, running, and standing. Quality shoes are made from durable materials that allow the feet to breathe and move naturally, preventing foot odor and fungal infections. Additionally, good shoes can improve posture, reduce back pain, and enhance athletic performance for sports and exercise. Investing in a good pair of shoes is a smart choice for anyone who wants to prioritize their foot health and comfort.",
@@ -37,6 +39,14 @@ async function main() {
       data: shoe,
     });
   });
+
+  await prisma.user.create({
+    data: {
+      username: "admin",
+      password: await generateHash("123456789")
+    }
+  })
+
   console.log("Seed data success");
 }
 
