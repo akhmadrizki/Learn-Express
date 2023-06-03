@@ -12,16 +12,20 @@ router.use(authRouter)
 
 router.use(auth)
 
-router.get("/", (req, res) => {
+router.get("/", (req, res, next) => {
   res.render("pages/index");
 });
 
-router.get("/about", (req, res) => {
+router.get("/about", (req, res, next) => {
   res.render("pages/about");
 });
 
 router.use(shoeRouter);
 
 router.use(categoryRouter);
+
+router.use((req, res, next) => { 
+  res.status(404).render("pages/404");
+});
 
 module.exports = router;

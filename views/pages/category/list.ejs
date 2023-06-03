@@ -9,6 +9,13 @@
     <%- include("../../components/navbar") %>
 
         <section id="home-content" class="container">
+            <% if (typeof messages !=='undefined' && messages.success) { %>
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <%= messages.success %>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            <% } %>
+
             <div class="align-items-center d-flex justify-content-between mt-5 mb-4">
                 <h3>Category List</h3>
                 <a href="/category/create" class="btn btn-outline-primary"> Add </a>

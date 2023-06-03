@@ -7,7 +7,7 @@ class ShoeController {
     res.render("pages/shoe/list", {shoes: result})
   }
 
-  static async detailPage(req, res) {
+  static async detailPage(req, res, next) {
     const result = await prisma.shoe.findUnique({
       where: {
         id: Number(req.params.id)
@@ -16,7 +16,11 @@ class ShoeController {
         category: true
       }
     })
-    console.log(result);
+
+    if (result === null) {
+      return next();
+    }
+
     res.render("pages/shoe/detail", {shoe: result})
     
   }

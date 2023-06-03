@@ -1,4 +1,4 @@
-const { PrismaClient } = require("@prisma/client");
+const { PrismaClient, Prisma } = require("@prisma/client");
 const prisma = new PrismaClient();
 
 class CategoryController {
@@ -12,13 +12,22 @@ class CategoryController {
     }
 
     static async store(req, res) {
-        await prisma.category.create({
-            data: {
-                name: req.body.name,
-            },
-        });
 
-        res.redirect("/category");
+        try {
+            await prisma.category.create({
+                data: {
+                    name: req.body.name,
+                },
+            });
+
+            req.flash("success", "Category created successfully");
+            res.redirect("/category");
+        } catch (error) {
+            if (error.code === "P2002") {
+                req.flash("error", "Category already exists");
+            }
+            res.redirect("/category/create");
+        }
     }
 
     static async edit(req, res) {
@@ -32,7 +41,8 @@ class CategoryController {
     }
 
     static async update(req, res) {
-        await prisma.category.update({
+        try {
+            await prisma.category.update({
             where: {
                 id: Number(req.params.id),
             },
@@ -41,7 +51,17 @@ class CategoryController {
             },
         });
 
+        req.flash("success", "Category updated successfully");
         res.redirect("/category");
+        } catch (error) {
+            if (error instanceof Prisma.PrismaClientKnownRequestError) {
+                if (error.code === "P2002") {
+                    req.flash("error", "Category already exists");
+                }
+            }
+
+            res.redirect(`/category/${req.params.id}/edit`);
+        }
     }
 
     static async delete(req, res) {

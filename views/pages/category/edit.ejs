@@ -16,6 +16,13 @@
                     <a href="/category" class="btn btn-outline-danger">Cancel</a>
                 </div>
 
+                <% if (typeof messages !=='undefined' && messages.error) { %>
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <%= messages.error %>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                <% } %>
+
                 <form class="mt-4" action="/category/<%= category.id %>/edit" method="post">
                     <div class="mb-3 row justify-content-start">
                         <div class="col-12">
